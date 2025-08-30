@@ -1,3 +1,5 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
+
 class FirebaseMsg {
   final msgService = FirebaseMessaging.instance;
 
