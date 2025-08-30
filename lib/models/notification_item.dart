@@ -1,46 +1,53 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class NotificationItem {
-  final String id;
+  final String? id;
   final String title;
   final String body;
   final DateTime time;
   final bool isRead;
+  final String type;
 
   NotificationItem({
-    required this.id,
+    this.id,
     required this.title,
     required this.body,
     required this.time,
     this.isRead = false,
+    this.type = 'rfid_scan',
   });
 
-  // Create NotificationItem from Map (Firestore data)
-  factory NotificationItem.fromMap(Map<String, dynamic> map, String documentId) {
-    return NotificationItem(
-      id: documentId,
-      title: map['title'] ?? '',
-      body: map['body'] ?? '',
-      time: map['timestamp']?.toDate() ?? DateTime.now(),
-      isRead: map['read'] ?? false,
-    );
-  }
-
-  // Convert NotificationItem to Map (for Firestore)
-  Map<String, dynamic> toMap() {
+  // Convert to Firestore data
+  Map<String, dynamic> toFirestore() {
     return {
       'title': title,
       'body': body,
       'timestamp': time,
       'read': isRead,
+      'type': type,
     };
   }
 
-  // Create a copy with updated values
+  // Create from Firestore data
+  factory NotificationItem.fromFirestore(Map<String, dynamic> data, String id) {
+    return NotificationItem(
+      id: id,
+      title: data['title'] ?? '',
+      body: data['body'] ?? '',
+      time: (data['timestamp'] as Timestamp?)?.toDate() ?? DateTime.now(),
+      isRead: data['read'] ?? false,
+      type: data['type'] ?? 'rfid_scan',
+    );
+  }
+
+  // Copy with changes
   NotificationItem copyWith({
     String? id,
     String? title,
     String? body,
     DateTime? time,
     bool? isRead,
+    String? type,
   }) {
     return NotificationItem(
       id: id ?? this.id,
@@ -48,31 +55,7 @@ class NotificationItem {
       body: body ?? this.body,
       time: time ?? this.time,
       isRead: isRead ?? this.isRead,
+      type: type ?? this.type,
     );
-  }
-
-  @override
-  String toString() {
-    return 'NotificationItem(id: $id, title: $title, body: $body, time: $time, isRead: $isRead)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    return other is NotificationItem &&
-        other.id == id &&
-        other.title == title &&
-        other.body == body &&
-        other.time == time &&
-        other.isRead == isRead;
-  }
-
-  @override
-  int get hashCode {
-    return id.hashCode ^
-        title.hashCode ^
-        body.hashCode ^
-        time.hashCode ^
-        isRead.hashCode;
   }
 }

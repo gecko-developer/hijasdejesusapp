@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "575931048789",
+    "project_id": "hijasdejesusnotif",
+    "storage_bucket": "hijasdejesusnotif.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575931048789:android:33e512ce47c9c2517445dc",
+        "android_client_info": {
+          "package_name": "com.example.empty"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq3MaYem2mO2WLusFHf6PsbXj8fYfGVwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
