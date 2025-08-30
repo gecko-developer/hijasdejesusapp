@@ -1,14 +1,5 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
-
-typedef NotificationCallback = void Function(String? title, String? body);
-
 class FirebaseMsg {
   final msgService = FirebaseMessaging.instance;
-  NotificationCallback? onNotification;
-
-  void setNotificationCallback(NotificationCallback callback) {
-    onNotification = callback;
-  }
 
   Future<void> initFirebaseMessaging() async {
     // Request permission for iOS
@@ -33,9 +24,6 @@ class FirebaseMsg {
     // Handle foreground messages
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       print('Received a message in the foreground: ${message.notification?.title}');
-      if (onNotification != null) {
-        onNotification!(message.notification?.title, message.notification?.body);
-      }
     });
   }
 }
