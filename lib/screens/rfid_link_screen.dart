@@ -408,10 +408,16 @@ class _RFIDLinkScreenState extends State<RFIDLinkScreen> with WidgetsBindingObse
                 SizedBox(height: AppTheme.space20),
               ],
             ] else ...[
-              // NFC Not Available Section
-              _buildNFCDisabledSection(),
-              
-              SizedBox(height: AppTheme.space20),
+              // Show different sections based on card status
+              if (_currentCard != null) ...[
+                // If card is linked, don't show NFC disabled - the card works regardless
+                SizedBox(height: AppTheme.space20),
+              ] else ...[
+                // Only show NFC disabled section if no card is linked
+                _buildNFCDisabledSection(),
+                
+                SizedBox(height: AppTheme.space20),
+              ],
             ],
             
             // Manual Input Section
