@@ -1,4 +1,4 @@
-package com.example.empty
+package com.example.sacred_heart_attendance_logs
 
 import android.content.Intent
 import android.provider.Settings

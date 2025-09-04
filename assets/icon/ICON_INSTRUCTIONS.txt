@@ -1,0 +1,37 @@
+📱 APP ICON CHANGE INSTRUCTIONS
+
+To change the app icon for Hijas de Jesus RFID App:
+
+1. CREATE YOUR ICON:
+   - Size: 1024x1024 pixels
+   - Format: PNG
+   - Background: Can be transparent or solid
+   - Design: Simple, clear, works at small sizes
+   - Name: app_icon.png
+
+2. PLACE YOUR ICON:
+   - Save as: assets/icon/app_icon.png
+   - Replace any existing app_icon.png file
+
+3. GENERATE ICONS:
+   Run this command in terminal:
+   flutter pub run flutter_launcher_icons
+
+4. BUILD APP:
+   flutter build apk --release
+
+Your new icon will be applied to:
+✅ Android (all densities)
+✅ iOS (all sizes)
+✅ Web
+✅ Windows
+✅ macOS
+
+DESIGN TIPS:
+- Use Hijas de Jesus branding colors
+- Consider religious/spiritual themes
+- Keep it simple for small sizes
+- Test on different backgrounds
+- Avoid too much text
+
+Current configuration is in pubspec.yaml under flutter_launcher_icons section.
